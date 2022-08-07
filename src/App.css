@@ -39,7 +39,7 @@
 }
 .bk{
   background: radial-gradient(#53c9f8,#1497f1);
-  height: 40vh;
+  height: 44vh;
 }
 .bal{
   padding:30px 1px;
@@ -55,4 +55,19 @@
   z-index: 2;
   height: 40vh;
   margin-top: 18vh;
+}
+
+.bottom{
+  position: absolute;
+  z-index: 3;
+  background-color: white;
+  height:62vh;
+  left:0;
+  right:0;
+  margin-top: -6vh;
+  margin-left: auto;
+  margin-right: auto;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+  border: 2px solid cyan;
 }
