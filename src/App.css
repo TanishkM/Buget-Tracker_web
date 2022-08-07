@@ -80,6 +80,15 @@
 .addbtn{
   display: inline;
 }
+.delete{
+  z-index: 100;
+}
+.link{
+  height: 50px;
+  position:absolute;
+  display: block;
+  width: 93%;
+}
 input:focus::placeholder {
   color: transparent;
 }
