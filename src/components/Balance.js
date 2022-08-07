@@ -28,8 +28,8 @@ const Balance = ({ datas, loading }) => {
       <div>
         <div className='container d-flex flex-column align-items-center justify-content-center text-light text-center bal'>
           <h3>Your Balance</h3>
-          {loading?<div class="spinner-border text-light" role="status">
-            <span class="visually-hidden">Loading...</span>
+          {loading?<div className="spinner-border text-light" role="status">
+            <span className="visually-hidden">Loading...</span>
           </div>:
           <h3 className='d-inline total'>₹ {total}</h3>}
         </div>
