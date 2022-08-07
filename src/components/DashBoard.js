@@ -46,7 +46,7 @@ const DashBoard = () => {
           <h5 className='text-light d-inline'>{a.currentUser ? a.currentUser.email : "nouser"}</h5>
           <button onClick={handleLogout} type="button" className="btn btn-info text-light border border-primary ">Logout</button>
         </div>
-        <Balance />
+        <Balance datas={datas} loading={loading}/>
       </div>
       <DashBot datas={datas} loading={loading} getTransactions={getTransactions} />
     </div>
