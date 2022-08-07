@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import cntx from './cntx'
 import { auth ,db} from '../fire'
-import { collection,getDocs,getDoc,addDoc,updateDoc,deleteDoc,doc } from "firebase/firestore";
+import { collection,getDocs,getDoc,addDoc,updateDoc,deleteDoc,doc ,query,where} from "firebase/firestore";
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 const AuthState = (props) => {
     ///////// Authentication
@@ -50,6 +50,10 @@ const AuthState = (props) => {
         return getDoc(TransactionDoc)
 
     }
+    const STransaction=(user)=>{
+        const q = query(transactionRef, where("user", "==", user))
+        return getDocs(q)
+    }
     const [transactionId,setTransactionId]=useState('')
     const value = {
         /// Authentication
@@ -64,7 +68,8 @@ const AuthState = (props) => {
         getAllTransactions,
         getTransaction,
         transactionId,
-        setTransactionId
+        setTransactionId,
+        STransaction
     }
 
 

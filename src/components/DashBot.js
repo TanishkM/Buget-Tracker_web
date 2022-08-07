@@ -25,7 +25,7 @@ const DashBot = ({datas,getTransactions,loading}) => {
           {loading?<div className="spinner-border text-primary" role="status">
             <span className="visually-hidden">Loading...</span>
           </div>:""}
-          {datas.length === 0 && !loading ? "No Transaction to display" :
+          {datas.length === 0 && !loading ? "No Transactions to display" :
             (datas.reverse()).map((data) => {
               return (<Adds data={data} key={data.id} getTransactions={getTransactions}/>
               )

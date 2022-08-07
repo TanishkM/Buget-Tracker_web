@@ -25,7 +25,8 @@ const Add = () => {
         title:titleRef.current.value,
         category:category,
         description:desc,
-        transaction:parseInt(transactionRef.current.value)
+        transaction:parseInt(transactionRef.current.value),
+        user:a.currentUser.email
     }
     try{
         await a.addTransaction(newTransaction)

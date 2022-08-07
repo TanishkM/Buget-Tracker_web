@@ -8,7 +8,7 @@ const DashBoard = () => {
   const [datas, setDatas] = useState([])
   const a = useContext(cntx)
   const getTransactions = async () => {
-    const data = await a.getAllTransactions()
+    const data = await a.STransaction(a.currentUser.email)
     setDatas(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
     setLoading(false)
   }
