@@ -26,7 +26,8 @@ const Balance = () => {
   return (
     <animated.div style={style1}>
       <div>
-        <div className='container d-flex align-items-center justify-content-center text-light text-center bal'>
+        <div className='container d-flex flex-column align-items-center justify-content-center text-light text-center bal'>
+        <h3>Your Balance</h3>
           <h3 className='d-inline total'>₹ {total}</h3>
         </div>
       </div>
