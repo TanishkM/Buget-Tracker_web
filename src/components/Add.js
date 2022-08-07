@@ -55,12 +55,12 @@ const Add = () => {
                             <option value="1">Income</option>
                             <option value="2">Food</option>
                             <option value="3">Transportation</option>
-                            <option value="3">Entertainment</option>
-                            <option value="3">Clothing</option>
-                            <option value="3">Subscriptions</option>
-                            <option value="3">Purchases</option>
-                            <option value="3">Bills</option>
-                            <option value="3">Miscellaneous</option>
+                            <option value="4">Entertainment</option>
+                            <option value="5">Clothing</option>
+                            <option value="6">Subscriptions</option>
+                            <option value="7">Purchases</option>
+                            <option value="8">Bills</option>
+                            <option value="9">Miscellaneous</option>
                         </select>
                     </div>
                     <div className="form-floating mb-3">

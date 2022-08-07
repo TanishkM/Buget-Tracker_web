@@ -61,7 +61,7 @@
   position: absolute;
   z-index: 3;
   background-color: white;
-  height:62vh;
+  min-height:62vh;
   left:0;
   right:0;
   margin-top: -6vh;
@@ -89,6 +89,9 @@
   display: block;
   width: 93%;
   opacity: 0;
+}
+.image{
+  height:24px;
 }
 input:focus::placeholder {
   color: transparent;

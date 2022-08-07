@@ -1,35 +1,82 @@
-import React,{useContext} from 'react'
+import React, { useContext } from 'react'
 import cntx from '../context/cntx'
-import {useNavigate} from 'react-router-dom'
-const Adds = ({data,getTransactions}) => {
-    const a = useContext(cntx)  
-    const handleDelete=async()=>{
+import { useNavigate } from 'react-router-dom'
+import profits from './assets/profits.png'
+import food from './assets/food.png'
+import transportation from './assets/transportation.png'
+import entertainment from './assets/entertainment.png'
+import clothing from './assets/clothing.png'
+import subscriptions from './assets/subscriptions.png'
+import purchase from './assets/purchase.png'
+import bill from './assets/bill.png'
+import misc from './assets/misc.png'
+import image from './assets/image.png'
+const Adds = ({ data, getTransactions }) => {
+    const a = useContext(cntx)
+    const handleDelete = async () => {
         await a.deleteTransaction(data.id)
         getTransactions()
     }
-    const navigate=useNavigate()
-    const goToEdit=()=>{
+    const navigate = useNavigate()
+    const goToEdit = () => {
         a.setTransactionId(data.id)
-        localStorage.setItem("t_id",data.id)
+        localStorage.setItem("t_id", data.id)
         navigate('/update')
+    }
+    let im
+    switch (data.category) {
+        case '0':
+            im = image
+            break;
+        case '1':
+            im = profits
+            break;
+        case '2':
+            im = food
+            break;
+        case '3':
+            im = transportation
+            break;
+        case '4':
+            im = entertainment
+            break;
+        case '5':
+            im = clothing
+            break;
+        case '6':
+            im=subscriptions
+            break;
+        case '7':
+            im=purchase
+            break;
+        case '8':
+            im=bill
+            break;
+        case '9':
+            im=misc
+            break;
+        default:
+            im=misc
     }
     return (
         <div>
-           <button type='button' onClick={goToEdit} className='link'> 
+            <button type='button' onClick={goToEdit} className='link'>
             </button>
             <div className=' mt-4'>
-            
+
                 <div className='d-flex justify-content-between'>
                     <div>
                         <div className='d-inline px-3 transaction'>
-                            {data.category}
+                            {
+                                <img className='image' src={im} alt={data.category} />
+                            }
                         </div>
                         <div className='d-inline px-3 transaction'>
                             <b>{data.title} </b>
                         </div>
                     </div>
                     <div className='d-flex align-items-center'>
-                        <div className='d-inline  transaction' style={{color:data.transaction<0?"red":"#06ad00"}}>
+                        <div className='d-inline  transaction' style={{ color: data.transaction < 0 ? "red" : "#06ad00" }}>
                             <b>₹ {(data.transaction)}</b>
                         </div>
                         <div className='d-inline px-3 delete'>
