@@ -1,7 +1,10 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import { useSpring,animated } from 'react-spring'
+import { useContext } from 'react'
+import cntx from '../context/cntx'
 const Start = () => {
+    const a=useContext(cntx)
 
     const style1=useSpring({
         from:{marginTop:500},

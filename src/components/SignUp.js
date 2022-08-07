@@ -1,12 +1,25 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import { useSpring,animated } from 'react-spring'
+import { useContext,useRef } from 'react'
+import cntx from '../context/cntx'
 const SignUp = () => {
+    const a=useContext(cntx)
+    const emailRef = useRef()
+    const passRef = useRef()
     const style1=useSpring({
         from:{marginTop:500},
         to:{marginTop:0},
         config:{duration:500}
     })
+
+    const handleSignUp=async()=>{
+        try
+        {await a.signup(emailRef.current.value,passRef.current.value)}
+        catch(err){
+            alert(err.message)
+        }
+    }
     return (
         <animated.div style={style1}>
         <div className=''>
@@ -14,14 +27,14 @@ const SignUp = () => {
                 <div className="card-body">
                     <h3 className="card-title text-center">Sign Up</h3>
                     <div className="form-floating mb-3 mt-5">
-                        <input type="email" className="form-control" id="floatingInput" placeholder="name@example.com"/>
+                        <input ref={emailRef} type="email" className="form-control" id="floatingInput" placeholder="name@example.com"/>
                             <label htmlFor="floatingInput">Email address</label>
                     </div>
                     <div className="form-floating">
-                        <input type="password" className="form-control" id="floatingPassword" placeholder="Password"/>
+                        <input ref={passRef}type="password" className="form-control" id="floatingPassword" placeholder="Password"/>
                             <label htmlFor="floatingPassword">Password</label>
                     </div>
-                    <button className="btn btn-primary d-block w-100 mt-4 btn-lg" type="button">Register</button>
+                    <button onClick={handleSignUp} className="btn btn-primary d-block w-100 mt-4 btn-lg" type="button">Register</button>
                     <Link className="link-primary text-center d-block mt-2" to="/login">Already Have an Account?</Link>
                 </div>
             </div>

@@ -8,17 +8,20 @@ import {
   Route,
 } from "react-router-dom";
 import DashBoard from './components/DashBoard';
+import AuthState from './context/AuthState';
 function App() {
   return (
     <>
-      <Router>
-        <Routes >
-          <Route exact path="*" element={<Start />} />
-          <Route exact path="/login" element={<Login />} />
-          <Route exact path="/sign_up" element={<SignUp />} />
-          <Route exact path="/dashboard" element={<DashBoard />} />
-        </Routes>
-      </Router>
+      <AuthState>
+        <Router>
+          <Routes >
+            <Route exact path="*" element={<Start />} />
+            <Route exact path="/login" element={<Login />} />
+            <Route exact path="/sign_up" element={<SignUp />} />
+            <Route exact path="/dashboard" element={<DashBoard />} />
+          </Routes>
+        </Router>
+      </AuthState>
     </>
   );
 }
