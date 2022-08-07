@@ -15,7 +15,6 @@ const Balance = () => {
       </div>
     </div>
     </animated.div>
-    
   )
 }
 

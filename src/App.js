@@ -9,6 +9,8 @@ import {
 } from "react-router-dom";
 import DashBoard from './components/DashBoard';
 import AuthState from './context/AuthState';
+import Add from './components/Add';
+import Edit from './components/Edit';
 function App() {
   return (
     <>
@@ -19,6 +21,8 @@ function App() {
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/sign_up" element={<SignUp />} />
             <Route exact path="/" element={<DashBoard />} />
+            <Route exact path="/add" element={<Add />} />
+            <Route exact path="/update" element={<Edit />} />
           </Routes>
         </Router>
       </AuthState>
