@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React from 'react'
 import { useSpring, animated } from 'react-spring'
 
 const Balance = () => {
@@ -7,7 +7,6 @@ const Balance = () => {
     to: { marginRight: 0 },
     config: { duration: 200 }
   })
-  const [bal,setBal]=useState(0)
   const datas = [
     {
       title: "firstsecond",
@@ -19,7 +18,7 @@ const Balance = () => {
       title: "thirdfourth",
       category: "s",
       description: "some other description",
-      transaction: -100000
+      transaction: -10000000
     }
   ]
   const amt=datas.map(t=>t.transaction)
@@ -28,7 +27,7 @@ const Balance = () => {
     <animated.div style={style1}>
       <div>
         <div className='container d-flex align-items-center justify-content-center text-light text-center bal'>
-          <h3 className='d-inline ' style={{ fontSize: "4em" }}>₹ {total}</h3>
+          <h3 className='d-inline total'>₹ {total}</h3>
         </div>
       </div>
     </animated.div>

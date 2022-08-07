@@ -74,6 +74,9 @@
 .transaction{
   font-size: 3vh;
 }
+.total{
+  font-size: 50px;
+}
 input:focus::placeholder {
   color: transparent;
 }

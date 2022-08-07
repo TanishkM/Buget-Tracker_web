@@ -19,7 +19,6 @@ const Adds = ({data}) => {
                     <div className='d-flex align-items-center'>
                         <div className='d-inline  transaction' style={{color:data.transaction<0?"red":"#06ad00"}}>
                             <b>₹ {Math.abs(data.transaction)}</b>
-
                         </div>
                         <div className='d-inline px-3'>
                             <button style={{ backgroundColor: "white", border: "none" }}>
