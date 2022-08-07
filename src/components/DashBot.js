@@ -1,27 +1,13 @@
-import React, { useEffect, useContext, useState } from 'react'
+import React from 'react'
 import {Link} from 'react-router-dom'
-import cntx from '../context/cntx'
 import { useSpring, animated } from 'react-spring'
 import Adds from './Adds'
-const DashBot = () => {
-  const [datas, setDatas] = useState([])
-  const [loading,setLoading]=useState(false)
+const DashBot = ({datas,getTransactions,loading}) => {
   const style1 = useSpring({
     from: { marginTop: 500 },
     to: { marginTop: 0 },
     config: { duration: 500 }
   })
-  const a = useContext(cntx)  
-  const getTransactions = async () => {
-    const data = await a.getAllTransactions()
-    setDatas(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-    setLoading(false)
-  }
-  useEffect(() => {
-    setLoading(true)
-    getTransactions();
-    // eslint-disable-next-line
-  }, [])
   return (
     <animated.div style={style1}>
       <div>
