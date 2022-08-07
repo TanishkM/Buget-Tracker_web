@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext,useRef } from 'react'
 import cntx from '../context/cntx'
 import { useSpring, animated } from 'react-spring'
 import { useNavigate, Link } from 'react-router-dom'
@@ -14,6 +14,26 @@ const Add = () => {
     })
     const a = useContext(cntx)
     const navigate = useNavigate()
+    const transactionRef=useRef()
+    const titleRef=useRef()
+    const handleSubmit=async()=>{
+    const e = document.getElementsByTagName("select").inputGroupSelect01;
+    const desc = document.getElementsByTagName("textarea").floatingTextarea.value;
+    const category = e.options[e.selectedIndex].value;
+
+    const newTransaction={
+        title:titleRef.current.value,
+        category:category,
+        description:desc,
+        transaction:parseInt(transactionRef.current.value)
+    }
+    try{
+        await a.addTransaction(newTransaction)
+        navigate('/')
+    }catch(err){
+        alert(err.message)
+    }
+    }
     return (
         <animated.div style={style1}>
 
@@ -26,19 +46,19 @@ const Add = () => {
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="inputGroup-sizing-lg">₹</span>
                             </div>
-                            <input   style={{ fontSize: "25px" }} type="text" placeholder="0" className="form-control text-center" aria-label="Large" aria-describedby="inputGroup-sizing-sm" />
+                            <input  ref={transactionRef} style={{ fontSize: "25px" }} type="text" placeholder="0" className="form-control text-center" aria-label="Large" aria-describedby="inputGroup-sizing-sm" />
                         </div>
                     </div>
                     <div className="input-group-lg mb-3">
                         <select className="custom-select" id="inputGroupSelect01">
-                            <option selected>Categories</option>
+                            <option defaultValue="0">Categories</option>
                             <option value="1">One</option>
                             <option value="2">Two</option>
                             <option value="3">Three</option>
                         </select>
                     </div>
                     <div className="form-floating mb-3">
-                        <input type="password" className="form-control" id="floatingPassword" placeholder="Password" />
+                        <input ref={titleRef} type="text" className="form-control" id="floatingPassword"/>
                         <label htmlFor="floatingPassword">Title</label>
                     </div>
                     <div className="form-floating mb-3">
@@ -46,9 +66,8 @@ const Add = () => {
                         <label htmlFor="floatingTextarea" >Description</label>
                     </div>
                     <div className='d-flex justify-content-between'>
-                        <Link to="/" className="btn btn-primary">Save</Link>
+                        <button onClick={handleSubmit} type="button" className="btn btn-primary">Save</button>
                         <Link to="/" className="btn btn-primary">Back</Link>
-
                     </div>
                 </div>
             </div>
