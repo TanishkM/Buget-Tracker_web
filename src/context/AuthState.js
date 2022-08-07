@@ -1,17 +1,37 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import cntx from './cntx'
-import {auth} from '../fire'
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../fire'
+import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from "firebase/auth";
 const AuthState = (props) => {
-    const signup=(email,password)=>{
-         return createUserWithEmailAndPassword(auth,email,password)
+    const [currentUser, setCurrentUser] = useState()
+    const [loading, setLoading] = useState(true)
+    const signup = (email, password) => {
+        return createUserWithEmailAndPassword(auth, email, password)
     }
-    const value={
-        signup
+    useEffect(() => {
+        const unsub = onAuthStateChanged(auth, user => { setCurrentUser(user) 
+            setLoading(false)
+        })
+        
+        return unsub
+    }, [])
+
+    const login = (email, password) => {
+        return signInWithEmailAndPassword(auth, email, password)
+    }
+
+    const logout = () => {
+        return signOut(auth)
+    }
+    const value = {
+        currentUser,
+        signup,
+        login,
+        logout
     }
     return (
         <cntx.Provider value={value}>
-            {props.children}
+            {!loading && props.children}
         </cntx.Provider>
     )
 }

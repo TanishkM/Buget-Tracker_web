@@ -1,9 +1,11 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
+import React, { useState } from 'react'
+import {Link,useNavigate} from 'react-router-dom'
 import { useSpring,animated } from 'react-spring'
 import { useContext,useRef } from 'react'
 import cntx from '../context/cntx'
 const SignUp = () => {
+    const navigate=useNavigate()
+    const [loading,setLoading]=useState(false)
     const a=useContext(cntx)
     const emailRef = useRef()
     const passRef = useRef()
@@ -15,10 +17,15 @@ const SignUp = () => {
 
     const handleSignUp=async()=>{
         try
-        {await a.signup(emailRef.current.value,passRef.current.value)}
+        {
+            setLoading(true)
+            await a.signup(emailRef.current.value,passRef.current.value)
+            navigate('/')
+        }
         catch(err){
             alert(err.message)
         }
+        setLoading(false)
     }
     return (
         <animated.div style={style1}>
@@ -34,7 +41,7 @@ const SignUp = () => {
                         <input ref={passRef}type="password" className="form-control" id="floatingPassword" placeholder="Password"/>
                             <label htmlFor="floatingPassword">Password</label>
                     </div>
-                    <button onClick={handleSignUp} className="btn btn-primary d-block w-100 mt-4 btn-lg" type="button">Register</button>
+                    <button disabled={loading} onClick={handleSignUp} className="btn btn-primary d-block w-100 mt-4 btn-lg" type="button">Register</button>
                     <Link className="link-primary text-center d-block mt-2" to="/login">Already Have an Account?</Link>
                 </div>
             </div>

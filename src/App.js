@@ -15,10 +15,10 @@ function App() {
       <AuthState>
         <Router>
           <Routes >
-            <Route exact path="*" element={<Start />} />
+            <Route exact path="/*" element={<Start />} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/sign_up" element={<SignUp />} />
-            <Route exact path="/dashboard" element={<DashBoard />} />
+            <Route exact path="/" element={<DashBoard />} />
           </Routes>
         </Router>
       </AuthState>
