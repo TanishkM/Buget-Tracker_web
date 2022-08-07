@@ -61,7 +61,7 @@
   position: absolute;
   z-index: 3;
   background-color: white;
-  min-height:62vh;
+  max-height:62vh;
   left:0;
   right:0;
   margin-top: -6vh;
@@ -70,6 +70,13 @@
   border-top-left-radius: 50px;
   border-top-right-radius: 50px;
   border: 2px solid cyan;
+  
+}
+.scroll{
+  position: relative;
+  height: 53vh;
+  overflow-y: overlay;
+
 }
 .transaction{
   font-size: 3vh;
@@ -78,6 +85,7 @@
   font-size: 50px;
 }
 .addbtn{
+  filter: invert(22%) sepia(44%) saturate(7221%) hue-rotate(214deg) brightness(101%) contrast(96%);
   display: inline;
 }
 .delete{
