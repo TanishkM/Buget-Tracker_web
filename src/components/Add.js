@@ -51,14 +51,20 @@ const Add = () => {
                     </div>
                     <div className="input-group-lg mb-3">
                         <select className="custom-select" id="inputGroupSelect01">
-                            <option defaultValue="0">Categories</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                        <option defaultValue="0">Default</option>
+                            <option value="1">Income</option>
+                            <option value="2">Food</option>
+                            <option value="3">Transportation</option>
+                            <option value="3">Entertainment</option>
+                            <option value="3">Clothing</option>
+                            <option value="3">Subscriptions</option>
+                            <option value="3">Purchases</option>
+                            <option value="3">Bills</option>
+                            <option value="3">Miscellaneous</option>
                         </select>
                     </div>
                     <div className="form-floating mb-3">
-                        <input ref={titleRef} type="text" className="form-control" id="floatingPassword"/>
+                        <input ref={titleRef} type="text" className="form-control" placeholder=' ' id="floatingPassword"/>
                         <label htmlFor="floatingPassword">Title</label>
                     </div>
                     <div className="form-floating mb-3">
