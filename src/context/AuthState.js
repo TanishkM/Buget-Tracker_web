@@ -21,6 +21,7 @@ const AuthState = (props) => {
     }
 
     const logout = () => {
+        setCurrentUser(null)
         return signOut(auth)
     }
     const value = {
