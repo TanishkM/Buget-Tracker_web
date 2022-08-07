@@ -8,6 +8,7 @@ const DashBoard = () => {
     if (a.currentUser == null)
       navigate('/start')
   })
+  
   const a = useContext(cntx)
   const navigate = useNavigate()
   const handleLogout = async () => {
