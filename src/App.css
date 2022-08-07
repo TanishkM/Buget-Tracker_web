@@ -77,6 +77,9 @@
 .total{
   font-size: 50px;
 }
+.addbtn{
+  display: inline;
+}
 input:focus::placeholder {
   color: transparent;
 }
