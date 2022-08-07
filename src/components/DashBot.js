@@ -39,7 +39,7 @@ const DashBot = () => {
           </div>:""}
           {datas.length === 0 && !loading ? "No Transaction to display" :
             (datas.reverse()).map((data) => {
-              return (<Adds data={data} key={data.id} />
+              return (<Adds data={data} key={data.id} getTransactions={getTransactions}/>
               )
             })
           }
