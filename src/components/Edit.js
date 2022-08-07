@@ -1,19 +1,58 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext,useRef,useState } from 'react'
 import cntx from '../context/cntx'
 import { useSpring, animated } from 'react-spring'
 import { useNavigate, Link } from 'react-router-dom'
 const Edit = () => {
+    const [title,setTitle]=useState()
+    const [desc,setDesc]=useState()
+    const [category,setCategory]=useState('0')
+    const [transaction,setTransaction]=useState(0)
+
     useEffect(() => {
         if (a.currentUser == null)
             navigate('/start')
-    })
+            getTrans()
+        // eslint-disable-next-line
+    },[])
+    const getTrans=async()=>{
+        try{
+            const t=await a.getTransaction(localStorage.getItem('t_id'))
+            setTitle(t.data().title)
+            setDesc(t.data().description)
+            setCategory(t.data().category)
+            setTransaction(t.data().transaction)
+        }
+        catch(err){
+            alert(err.message)
+        }
+    }
+    const a = useContext(cntx)
     const style1 = useSpring({
         from: { marginTop: 500 },
         to: { marginTop: 0 },
         config: { duration: 400 }
     })
-    const a = useContext(cntx)
     const navigate = useNavigate()
+    const transactionRef=useRef()
+    const titleRef=useRef()
+    const handleSubmit=async()=>{
+    const e = document.getElementsByTagName("select").inputGroupSelect01;
+    const desc = document.getElementsByTagName("textarea").floatingTextarea.value;
+    const category = e.options[e.selectedIndex].value;
+
+    const newTransaction={
+        title:titleRef.current.value,
+        category:category,
+        description:desc,
+        transaction:parseInt(transactionRef.current.value)
+    }
+    try{
+        await a.updateTransaction(localStorage.getItem('t_id'),newTransaction)
+        navigate('/')
+    }catch(err){
+        alert(err.message)
+    }
+    }
     return (
         <animated.div style={style1}>
 
@@ -26,29 +65,28 @@ const Edit = () => {
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="inputGroup-sizing-lg">₹</span>
                             </div>
-                            <input   style={{ fontSize: "25px" }} type="text" placeholder="0" className="form-control text-center" aria-label="Large" aria-describedby="inputGroup-sizing-sm" />
+                            <input  ref={transactionRef} value={transaction} onChange={e => setTransaction(e.target.value)} style={{ fontSize: "25px" }} type="text" placeholder="0" className="form-control text-center" aria-label="Large" aria-describedby="inputGroup-sizing-sm" />
                         </div>
                     </div>
                     <div className="input-group-lg mb-3">
-                        <select className="custom-select" id="inputGroupSelect01">
-                            <option selected>Categories</option>
+                        <select value={category} onChange={e => setCategory(e.target.value) } className="custom-select" id="inputGroupSelect01">
+                            <option defaultValue={"0"}>Categories</option>
                             <option value="1">One</option>
                             <option value="2">Two</option>
                             <option value="3">Three</option>
                         </select>
                     </div>
                     <div className="form-floating mb-3">
-                        <input type="password" className="form-control" id="floatingPassword" placeholder="Password" />
+                        <input ref={titleRef} value={title} onChange={e => setTitle(e.target.value) } type="text" className="form-control" id="floatingPassword"/>
                         <label htmlFor="floatingPassword">Title</label>
                     </div>
                     <div className="form-floating mb-3">
-                        <textarea className="form-control" style={{ height: "200px" }} placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                        <textarea value={desc} onChange={e => setDesc(e.target.value) } className="form-control" style={{ height: "200px" }} placeholder="Leave a comment here" id="floatingTextarea"></textarea>
                         <label htmlFor="floatingTextarea" >Description</label>
                     </div>
                     <div className='d-flex justify-content-between'>
-                        <Link to="/" className="btn btn-primary">Save</Link>
+                        <button onClick={handleSubmit} type="button" className="btn btn-primary">Save</button>
                         <Link to="/" className="btn btn-primary">Back</Link>
-
                     </div>
                 </div>
             </div>

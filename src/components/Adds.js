@@ -1,16 +1,22 @@
 import React,{useContext} from 'react'
 import cntx from '../context/cntx'
-import {Link} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 const Adds = ({data,getTransactions}) => {
     const a = useContext(cntx)  
     const handleDelete=async()=>{
         await a.deleteTransaction(data.id)
         getTransactions()
     }
+    const navigate=useNavigate()
+    const goToEdit=()=>{
+        a.setTransactionId(data.id)
+        localStorage.setItem("t_id",data.id)
+        navigate('/update')
+    }
     return (
         <div>
-           <Link to="/update" className='link'> 
-            </Link>
+           <button type='button' onClick={goToEdit} className='link'> 
+            </button>
             <div className=' mt-4'>
             
                 <div className='d-flex justify-content-between'>

@@ -88,6 +88,7 @@
   position:absolute;
   display: block;
   width: 93%;
+  opacity: 0;
 }
 input:focus::placeholder {
   color: transparent;

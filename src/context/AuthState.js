@@ -29,7 +29,7 @@ const AuthState = (props) => {
 
     ///////  Database
     const transactionRef=collection(db,"transactions")
-    
+
     const addTransaction=(newTransaction)=>{
         return addDoc(transactionRef,newTransaction)
     }
@@ -50,6 +50,7 @@ const AuthState = (props) => {
         return getDoc(TransactionDoc)
 
     }
+    const [transactionId,setTransactionId]=useState('')
     const value = {
         /// Authentication
         currentUser,
@@ -61,7 +62,9 @@ const AuthState = (props) => {
         updateTransaction,
         deleteTransaction,
         getAllTransactions,
-        getTransaction
+        getTransaction,
+        transactionId,
+        setTransactionId
     }
 
 
