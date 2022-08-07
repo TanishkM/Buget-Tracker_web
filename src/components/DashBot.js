@@ -21,6 +21,7 @@ const DashBot = () => {
   useEffect(() => {
     setLoading(true)
     getTransactions();
+    // eslint-disable-next-line
   }, [])
   return (
     <animated.div style={style1}>
