@@ -7,20 +7,6 @@ const Balance = ({ datas, loading }) => {
     to: { marginRight: 0 },
     config: { duration: 200 }
   })
-  // const datas = [
-  //   {
-  //     title: "firstsecond",
-  //     category: "s",
-  //     description: "some description",
-  //     transaction: 10
-  //   },
-  //   {
-  //     title: "thirdfourth",
-  //     category: "s",
-  //     description: "some other description",
-  //     transaction: -10000000
-  //   }
-  // ]
   const amt = datas.map(t => t.transaction)
   const total = amt.reduce((acc, item) => (acc += item), 0).toFixed(2);
   return (

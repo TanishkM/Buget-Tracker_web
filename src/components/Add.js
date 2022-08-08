@@ -1,12 +1,8 @@
-import React, { useEffect, useContext,useRef } from 'react'
+import React, {  useContext,useRef } from 'react'
 import cntx from '../context/cntx'
 import { useSpring, animated } from 'react-spring'
 import { useNavigate, Link } from 'react-router-dom'
 const Add = () => {
-    useEffect(() => {
-        if (a.currentUser == null)
-            navigate('/start')
-    })
     const style1 = useSpring({
         from: { marginTop: 500 },
         to: { marginTop: 0 },
@@ -21,12 +17,14 @@ const Add = () => {
     const desc = document.getElementsByTagName("textarea").floatingTextarea.value;
     const category = e.options[e.selectedIndex].value;
 
+    var date=new Date();
     const newTransaction={
         title:titleRef.current.value,
         category:category,
         description:desc,
         transaction:parseInt(transactionRef.current.value),
-        user:a.currentUser.email
+        user:a.currentUser.email,
+        time:date
     }
     try{
         await a.addTransaction(newTransaction)

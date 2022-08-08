@@ -9,17 +9,15 @@ const DashBoard = () => {
   const a = useContext(cntx)
   const getTransactions = async () => {
     const data = await a.STransaction(a.currentUser.email)
-    setDatas(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+    const t = data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
+    setDatas(t)
     setLoading(false)
   }
   useEffect(() => {
-    if (a.currentUser == null)
-      navigate('/start')
     setLoading(true)
     getTransactions();
-      // eslint-disable-next-line
-  },[])
-
+    // eslint-disable-next-line
+  }, [])
   const navigate = useNavigate()
   const handleLogout = async () => {
     try {
@@ -46,7 +44,7 @@ const DashBoard = () => {
           <h5 className='text-light d-inline'>{a.currentUser ? a.currentUser.email : "nouser"}</h5>
           <button onClick={handleLogout} type="button" className="btn btn-info text-light border border-primary ">Logout</button>
         </div>
-        <Balance datas={datas} loading={loading}/>
+        <Balance datas={datas} loading={loading} />
       </div>
       <DashBot datas={datas} loading={loading} getTransactions={getTransactions} />
     </div>

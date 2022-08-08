@@ -18,9 +18,8 @@ const Adds = ({ data, getTransactions }) => {
         getTransactions()
     }
     const navigate = useNavigate()
-    const goToEdit = () => {
-        a.setTransactionId(data.id)
-        localStorage.setItem("t_id", data.id)
+    const goToEdit = async() => {
+        await a.setTransactionId(data.id)
         navigate('/update')
     }
     let im

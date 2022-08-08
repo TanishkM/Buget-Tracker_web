@@ -7,17 +7,13 @@ const Edit = () => {
     const [desc,setDesc]=useState()
     const [category,setCategory]=useState('0')
     const [transaction,setTransaction]=useState(0)
-
     useEffect(() => {
-        ///
-        if (a.currentUser == null)
-            navigate('/start')
             getTrans()
         // eslint-disable-next-line
     },[])
     const getTrans=async()=>{
         try{
-            const t=await a.getTransaction(localStorage.getItem('t_id'))
+            const t=await a.getTransaction(a.transactionId)
             setTitle(t.data().title)
             setDesc(t.data().description)
             setCategory(t.data().category)
@@ -48,7 +44,7 @@ const Edit = () => {
         transaction:parseInt(transactionRef.current.value)
     }
     try{
-        await a.updateTransaction(localStorage.getItem('t_id'),newTransaction)
+        await a.updateTransaction(a.transactionId,newTransaction)
         navigate('/')
     }catch(err){
         alert(err.message)
