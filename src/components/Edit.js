@@ -9,6 +9,7 @@ const Edit = () => {
     const [transaction,setTransaction]=useState(0)
 
     useEffect(() => {
+        ///
         if (a.currentUser == null)
             navigate('/start')
             getTrans()
