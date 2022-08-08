@@ -11,6 +11,7 @@ import DashBoard from './components/DashBoard';
 import AuthState from './context/AuthState';
 import Add from './components/Add';
 import Edit from './components/Edit';
+import PrivateRoute from './components/PrivateRoute';
 function App() {
   return (
     <>
@@ -20,9 +21,11 @@ function App() {
             <Route exact path="/*" element={<Start />} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/sign_up" element={<SignUp />} />
-            <Route exact path="/" element={<DashBoard />} />
-            <Route exact path="/add" element={<Add />} />
-            <Route exact path="/update" element={<Edit />} />
+            <Route element={<PrivateRoute />}>
+              <Route exact path="/" element={<DashBoard />} />
+              <Route exact path="/add" element={<Add />} />
+              <Route exact path="/update" element={<Edit />} />
+            </Route>
           </Routes>
         </Router>
       </AuthState>
