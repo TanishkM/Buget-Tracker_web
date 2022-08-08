@@ -45,7 +45,7 @@ const Add = () => {
                             <div className="input-group-prepend">
                                 <span className="input-group-text" id="inputGroup-sizing-lg">₹</span>
                             </div>
-                            <input  ref={transactionRef} style={{ fontSize: "25px" }} type="text" placeholder="0" className="form-control text-center" aria-label="Large" aria-describedby="inputGroup-sizing-sm" />
+                            <input  pattern="[0-9]*"  inputmode="numeric" ref={transactionRef} style={{ fontSize: "25px" }} type="text" placeholder="0" className="form-control text-center" aria-label="Large" aria-describedby="inputGroup-sizing-sm" />
                         </div>
                     </div>
                     <div className="input-group-lg mb-3">
